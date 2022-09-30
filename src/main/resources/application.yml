@@ -1,0 +1,44 @@
+
+spring:
+  rabbitmq:
+    host: 120.55.40.127
+    port: 31552
+    username: test100_mq
+    password: Mq1qaz2wsx
+    virtual-host: /1247 #参考下方截图  /109
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 25
+  thymeleaf:
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/beidoudata?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+
+    username: root
+    password: password
+
+    hikari:
+      # 链接池名
+      pool-name: DateHikariCP
+      minimum-idle: 5 #最新连接数
+      idle-timeout: 1800000 # 空闲连接存活最大时间
+      maximum-pool-size: 10 # 最大连接数
+      auto-commit: true
+      connection-test-query: SELECT 1
+server:
+  port: 9088
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  type-aliases-package: com.mis.kill.pojo
+
+
+logging:
+  level:
+    com.mis.beidoudata.mapper: debug
+
+
+
